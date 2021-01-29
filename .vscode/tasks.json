@@ -1,14 +1,15 @@
 {
 	"version": "2.0.0",
 	"tasks": [{
-    "label": "build-npm-script",
+    "label": "build-ts",
     "command": "yarn",
     "type": "shell",
+    "group": "build",
     "isBackground": true,
     "args": [
       "--prefix",
       "${workspaceFolder}/src",
-      "dev"
+      "build"
     ],
     "problemMatcher": [
       {
@@ -19,7 +20,7 @@
         "background": {
             "activeOnStart": true,
             "beginsPattern": "^.*Project is running at.*$",
-            "endsPattern": "^.*Compiled successfully.*$"
+            "endsPattern": "^.*compiled successfully.*$"
         }
       }, {
         "base": "$tslint-webpack",
@@ -29,9 +30,25 @@
         "background": {
             "activeOnStart": true,
             "beginsPattern": "^.*Project is running at.*$",
-            "endsPattern": "^.*Compiled successfully.*$"
+            "endsPattern": "^.*compiled successfully.*$"
         }
       }
     ]
-  }]
+  },
+  {
+    "label": "dev-ts",
+    "command": "yarn",
+    "args": [
+      "--prefix",
+      "${workspaceFolder}/src",
+      "dev"
+    ],
+    "type": "shell",
+    "group": "build",
+    "isBackground": true,
+    "problemMatcher": ["$ts-webpack-watch", "$tslint-webpack-watch"],
+    "dependsOn": [
+      "build-ts"
+    ],
+  }, ]
 }
