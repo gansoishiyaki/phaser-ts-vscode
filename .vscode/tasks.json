@@ -1,15 +1,15 @@
 {
 	"version": "2.0.0",
 	"tasks": [{
-    "label": "build-ts",
-    "command": "yarn",
+    "label": "watch typescript",
     "type": "shell",
+    "command": "yarn",
     "group": "build",
     "isBackground": true,
     "args": [
       "--prefix",
       "${workspaceFolder}/src",
-      "build"
+      "watch"
     ],
     "problemMatcher": [
       {
@@ -36,19 +36,19 @@
     ]
   },
   {
-    "label": "dev-ts",
+    "label": "run phaser-ts",
+    "type": "shell",
     "command": "yarn",
     "args": [
       "--prefix",
       "${workspaceFolder}/src",
-      "dev"
+      "serve"
     ],
-    "type": "shell",
     "group": "build",
     "isBackground": true,
     "problemMatcher": ["$ts-webpack-watch", "$tslint-webpack-watch"],
     "dependsOn": [
-      "build-ts"
+      "watch typescript"
     ],
   }, ]
 }
